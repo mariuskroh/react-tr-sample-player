@@ -1,8 +1,6 @@
 import { createUseStyles } from "react-jss";
 import colors from "../../helpers/colors";
 
-const boxShadow = `inset 2px 2px 2px 0px ${colors.TR909.primary}`;
-
 const useStyles = createUseStyles({
   root: {
     position: "relative",

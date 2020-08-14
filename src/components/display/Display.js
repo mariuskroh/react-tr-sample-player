@@ -8,7 +8,7 @@ const Display = ({ text, isPlaying }) => {
   const classes = useStyles();
   const { root, model808, model909, display, displayText, active } = classes;
   // get context
-  const { is808, toggle808 } = useContext(ModelContext);
+  const { is808 } = useContext(ModelContext);
   return (
     <div id="display" className={`${root} ${is808 ? model808 : model909} `}>
       <div className={`${display} ${isPlaying ? active : null} `}>
