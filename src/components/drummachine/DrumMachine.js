@@ -37,13 +37,14 @@ const DrumMachine = () => {
 
   // get context and set preset
   const { is808, toggle808 } = useContext(ModelContext);
-  let preset = is808 ? TR808 : TR909;
-
+  const setPreset = is808 ? TR808 : TR909;
+  // destructure
+  const [preset] = setPreset;
   // user presses a key
   const handleKeydown = (e) => {
     // check if key pressed should trigger a sample, if not return
     const keyPressed = e.keyCode;
-    const sound = preset[0].sounds.filter((sound) => {
+    const sound = preset.sounds.filter((sound) => {
       return sound.keyCode === keyPressed;
     });
     if (sound.length === 0) {
@@ -55,13 +56,11 @@ const DrumMachine = () => {
   // user clicks
   const handleClick = (e) => {
     // check if user clicked a pad, if not return
-    // ids and key names are all over the place because of fcc test case specifications
-    // how can this be improved?
     const target = e.target;
     if (!target.classList.contains("drum-pad")) {
       return;
     }
-    const sound = preset[0].sounds.filter((sound) => {
+    const sound = preset.sounds.filter((sound) => {
       return sound.name === target.id;
     });
     const sample = document.getElementById(sound[0].trigger);
@@ -73,7 +72,7 @@ const DrumMachine = () => {
     element.currentTime = 0;
     element.play();
     // get name and update display
-    const name = preset[0].sounds.filter((sound) => {
+    const name = preset.sounds.filter((sound) => {
       return sound.trigger === element.id;
     });
     const displayText = name[0].name;
@@ -83,7 +82,7 @@ const DrumMachine = () => {
     setTimeout(resetPad, 150, element.id);
   };
 
-  const makePads = preset[0].sounds.map((sound, i) => (
+  const makePads = preset.sounds.map((sound, i) => (
     <DrumPad
       key={sound.id}
       id={sound.name}

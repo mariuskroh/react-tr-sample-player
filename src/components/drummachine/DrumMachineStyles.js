@@ -6,7 +6,6 @@ const boxShadow = "7px 7px 5px 0px rgba(0,0,0,0.75)";
 
 const useStyles = createUseStyles({
   root: {
-    // i need to fix background with model theming
     backgroundColor: "#444444",
     height: "100vh",
     width: "100vw",
@@ -65,7 +64,7 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "row",
   },
-  // Model Theming
+  // Model Theming - can we do this with props + conditional styling?
   model808: {
     "& $machine": { backgroundColor: colors.TR808.background },
     "& $title": { color: colors.TR808.primary },

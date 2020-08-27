@@ -26,6 +26,5 @@ export default () => {
       return newState;
     });
   };
-  console.log(padsPlaying);
   return [padsPlaying, setPlayState, resetPad];
 };
